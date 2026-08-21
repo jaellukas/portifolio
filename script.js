@@ -3,59 +3,118 @@
 // ========================================
 
 const projetos = [
+
     {
         titulo: "Sistema de Biblioteca",
+
         descricao:
             "Sistema web para gerenciamento de livros, usuários e empréstimos.",
-        tecnologias: ["HTML", "CSS", "JavaScript"],
+
+        tecnologias: [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+
+        icone: "📚",
+
         link: "#"
     },
+
 
     {
         titulo: "Lista de Tarefas",
+
         descricao:
             "Aplicação para criação, organização e acompanhamento de tarefas.",
-        tecnologias: ["HTML", "CSS", "JavaScript"],
+
+        tecnologias: [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+
+        icone: "✅",
+
         link: "#"
     },
+
 
     {
         titulo: "Página de Restaurante",
+
         descricao:
             "Landing page responsiva para apresentação de um restaurante.",
-        tecnologias: ["HTML", "CSS"],
+
+        tecnologias: [
+            "HTML",
+            "CSS"
+        ],
+
+        icone: "🍽️",
+
         link: "#"
     },
+
 
     {
         titulo: "Controle Financeiro",
+
         descricao:
             "Interface para acompanhar receitas, despesas e saldo financeiro.",
-        tecnologias: ["HTML", "CSS", "JavaScript"],
+
+        tecnologias: [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+
+        icone: "💰",
+
         link: "#"
     },
+
 
     {
         titulo: "Clima Agora",
+
         descricao:
             "Interface para consulta de informações meteorológicas.",
-        tecnologias: ["HTML", "CSS", "JavaScript"],
+
+        tecnologias: [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+
+        icone: "🌤️",
+
         link: "#"
     },
 
+
     {
         titulo: "Portfólio Pessoal",
+
         descricao:
             "Página pessoal para apresentação de projetos e habilidades.",
-        tecnologias: ["HTML", "CSS", "JavaScript"],
+
+        tecnologias: [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+
         icone: "💻",
+
         link: "#"
     }
+
 ];
 
 
 // ========================================
-// SELECIONA O CONTAINER
+// SELECIONA O CONTAINER DOS PROJETOS
 // ========================================
 
 const projectsContainer =
@@ -63,36 +122,64 @@ const projectsContainer =
 
 
 // ========================================
-// RENDERIZA OS PROJETOS
+// FUNÇÃO PARA RENDERIZAR OS PROJETOS
 // ========================================
 
 const renderizarProjetos = () => {
 
     projectsContainer.innerHTML = projetos
+
         .map(projeto => {
 
-            const tecnologias = projeto.tecnologias
-                .map(tecnologia => `<span>${tecnologia}</span>`)
-                .join("");
+            /*
+                Também utilizamos map()
+                para gerar as tecnologias
+                de cada projeto.
+            */
+
+            const tecnologias =
+                projeto.tecnologias
+
+                    .map(
+                        tecnologia =>
+                            `<span>${tecnologia}</span>`
+                    )
+
+                    .join("");
+
+
+            /*
+                TEMPLATE LITERAL
+
+                O HTML dos cards é criado
+                dinamicamente.
+            */
 
             return `
+
                 <article class="project-card">
 
                     <div class="project-icon">
                         ${projeto.icone}
                     </div>
 
+
                     <h3>
                         ${projeto.titulo}
                     </h3>
+
 
                     <p>
                         ${projeto.descricao}
                     </p>
 
+
                     <div class="project-technologies">
+
                         ${tecnologias}
+
                     </div>
+
 
                     <a
                         href="${projeto.link}"
@@ -102,8 +189,11 @@ const renderizarProjetos = () => {
                     </a>
 
                 </article>
+
             `;
+
         })
+
         .join("");
 };
 
@@ -113,26 +203,3 @@ const renderizarProjetos = () => {
 // ========================================
 
 renderizarProjetos();
-
-
-// ========================================
-// FORMULÁRIO DE CONTATO
-// ========================================
-
-const contactForm =
-    document.querySelector("#contact-form");
-
-
-contactForm.addEventListener("submit", (event) => {
-
-    event.preventDefault();
-
-    const name =
-        document.querySelector("#name").value;
-
-    alert(
-        `Obrigado pela mensagem, ${name}! Em breve entrarei em contato.`
-    );
-
-    contactForm.reset();
-});
